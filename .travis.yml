@@ -17,4 +17,4 @@ script:
 # UPDATE: không cần --coverage.thay vào đó bổ sung -e CI=true
 # Giải thích CI=true: 
 # => By default npm test runs the watcher with interactive CLI. However, you can force it to run tests once and finish the process by setting an environment variable called CI.
-  - docker run docker-react npm run test --coverage
+  - docker run docker-react npm run test -- --coverage
