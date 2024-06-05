@@ -1,0 +1,20 @@
+# Cần quyền admin khi chạy 
+sudo: required 
+
+# cài docker trước.
+services:
+  - docker
+
+# các câu lệnh cần chạy trước khi deploy, test. 
+before_install:
+  - docker build -t docker-react -f Dockerfile.dev .
+
+# Câu lệnh thực thi để test...
+# Travis listen output từng command, nếu status trả về khác 0 thì nghĩa là failed
+script:
+# vì câu lệnh npm run test mặc định không tự kết thúc, exit. => Travis không nhận được output
+# nên bổ sung trong command thêm --coverage.
+# UPDATE: không cần --coverage.thay vào đó bổ sung -e CI=true
+# Giải thích CI=true: 
+# => By default npm test runs the watcher with interactive CLI. However, you can force it to run tests once and finish the process by setting an environment variable called CI.
+  - docker run -e -CI=true docker-react npm run test
