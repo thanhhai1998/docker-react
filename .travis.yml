@@ -16,5 +16,20 @@ script:
 # nên bổ sung trong command thêm --coverage.
 # UPDATE: không cần --coverage.thay vào đó bổ sung -e CI=true
 # Giải thích CI=true: 
-# => By default npm test runs the watcher with interactive CLI. However, you can force it to run tests once and finish the process by setting an environment variable called CI.
+# => By default npm test runs the watcher with interactive CLI. However, 
+# you can force it to run tests once and finish the process by setting an environment variable called CI.
   - docker run -e CI=true docker-react npm run test
+
+deploy: 
+  provider: elasticbeanstalk
+  region: "ap-southeast-2"
+  name: "frontend"
+  env: "Frontend-env"
+  # bucket: thùng ?
+  # bucket S3: ổ cứng chạy trên AWS
+  bucket_name: "elasticbeanstalk-ap-southeast-2-211125493186"
+  bucket_path: "frontend"
+  on: 
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_key: $AWS_SECRET_KEY
