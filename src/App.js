@@ -15,10 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React Jstt 10/06
-          remove 
-    ports:
-      - '80:80' ???
+          Learn react - BTH
         </a>
       </header>
     </div>
