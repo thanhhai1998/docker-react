@@ -23,12 +23,12 @@ script:
 deploy: 
   provider: elasticbeanstalk
   region: "ap-southeast-2"
-  app: "frontend"
-  env: "Frontend-env"
+  app: "TestDeploy2"
+  env: "TestDeploy2-env"
   # bucket: thùng ?
   # bucket S3: ổ cứng chạy trên AWS
   bucket_name: "elasticbeanstalk-ap-southeast-2-211125493186"
-  bucket_path: "frontend"
+  bucket_path: "TestDeploy2"
   on: 
     branch: master
   access_key_id: $AWS_ACCESS_KEY
